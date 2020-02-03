@@ -65,5 +65,31 @@
 			</plugin>
 		</plugins>
 	</build>
+	<profiles>
+		<profile>
+			<id>dev</id>
+			<build>
+				<filters>
+					<filter>profiles/dev/app.properties</filter>
+				</filters>
+			</build>
+		</profile>
+		<profile>
+			<id>homolog</id>
+			<build>
+				<filters>
+					<filter>profiles/homolog/app.properties</filter>
+				</filters>
+			</build>
+		</profile>
+		<profile>
+			<id>prod</id>
+			<build>
+				<filters>
+					<filter>profiles/prod/app.properties</filter>
+				</filters>
+			</build>
+		</profile>
+	</profiles>
 
 </project>
