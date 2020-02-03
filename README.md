@@ -54,7 +54,6 @@ Mas vamos lá ... fazer as coisas desse modo não é muito saudável, principalm
 ![Estagiarios](https://www.ibahia.com/fileadmin/user_upload/ibahia/2017/agosto/18/memeestagio8.jpg)
 
 Mas calma, seu estagiário não é burro. Se ele fez algo parecido, ou exatamente isso ele apenas foi vitima do sistema... nesse caso, de um sistema mal arquitetado e quiçá um arquiteto mal intencionado.
-___
 
 ## Agora, com maven profiles... A história é outra
 
