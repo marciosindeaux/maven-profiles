@@ -40,4 +40,4 @@ _(application.properties para Homologação)_
 
 Mas vamos lá ... fazer as coisas desse modo não é muito saudável, principalmente em um contexto de CI e CD. Isso acabaria gerando coisas desnecessárias. Inclusive, ter essa abordagem faz sua apliação estar na ameaça de erro humano, afinal, seu estagiário não imaginaria qur precisaria ficar comentando codigo para fazer deploy, não é ?
 
-!(Estagiarios)[https://www.ibahia.com/fileadmin/user_upload/ibahia/2017/agosto/18/memeestagio8.jpg]
+![Estagiarios](https://www.ibahia.com/fileadmin/user_upload/ibahia/2017/agosto/18/memeestagio8.jpg)
