@@ -172,4 +172,4 @@ Levando como base o exemplo que tivemos nas ultimas partes da explicação, o po
 
 Sim, está, basta apenas que voce faça ```mvn {command} -P {id_profile}``` para conseguir rodar a sua aplicação no profile que desejou. Leve este pequeno projeto como inspiração para suas aventuras com os perfis do maven. 
 
-Espero ter ajudado, 
+Espero ter ajudado.
