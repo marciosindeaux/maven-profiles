@@ -1,7 +1,7 @@
 # Separando Ambientes com Perfís do Maven
 Uma pequena forma de separar as variáveis de ambiente de Desenvolvimento, Homologação e Produção, com Perfis do Maven (Maven Profiles). No caso exemplo, será utilizada uma aplicação que foi gerada no [Spring Initializr](https://start.spring.io/)
 
-## Como era antes dos Profiles do maven 
+## Como é a vida sem usar Perfis do Maven 
 
 Durante o desenvolvimento de uma aplicação, é bem complicado isolar as configurações do ambiente em que a aplicação está. É muito comum ver em empresas, aplicações que, quando estão em desenvolvimento utilizam um banco de dados local, em Homologação utilizam um banco de dados do servidor de homologação, e em Produção utilizam um outro banco de dados. 
 
@@ -49,21 +49,21 @@ spring.datasource.url=jdbc:h2:file:./databaseHomol
 ```
 _(application.properties para Homologação)_
 
-Mas vamos lá ... fazer as coisas desse modo não é muito saudável, principalmente em um contexto de CI e CD. Isso acabaria gerando coisas desnecessárias. Inclusive, ter essa abordagem faz sua apliação estar na ameaça de erro humano, afinal, seu estagiário não imaginaria que precisaria ficar comentando codigo para fazer deploy, não é ?
+Mas vamos lá ... fazer as coisas desse modo não é muito saudável, principalmente em um contexto de CI e CD. Isso acabaria gerando coisas desnecessárias. Inclusive, ter essa abordagem faz sua aplicação estar na ameaça de erro humano, afinal, seu estagiário não imaginaria que precisaria ficar comentando código para subir a aplicação para Homologação ou produção, não é ?
 
 ![Estagiarios](https://www.ibahia.com/fileadmin/user_upload/ibahia/2017/agosto/18/memeestagio8.jpg)
 
 Mas calma, seu estagiário não é burro. Se ele fez algo parecido, ou exatamente isso ele apenas foi vitima do sistema... nesse caso, de um sistema mal arquitetado e quiçá um arquiteto mal intencionado.
 
-## Agora, com maven profiles... A história é outra
+## Agora, com os Perfis do Maven, A história é outra
 
 ### Ajustando os Perfis
 
-Primeiramente teremos um arquivo para cada perfil de configuração e ambiente, nele carregaremos as variaveis que vão conter os valores que cada perfil vai esperar. Para ficar mais lúdico, vamos continuar usando o exemplo acima.
+Primeiramente teremos um arquivo para cada perfil de configuração e ambiente, nele carregaremos as variáveis que vão conter os valores que cada perfil vai esperar. Para ficar mais lúdico, vamos continuar usando o exemplo acima.
 
 Primeiramente, vamos criar pastas no sistema, para guardar esses profiles em algum local que possa ser acessado pelo nosso querido Maven.
 
-Assim como no codigo fonte desse projeto, eu costumo coloca-los numa pasta chamada **profiles**, que fica ao lado de **src**. E dentro dela uma pasta para cada profile (afinal, podemos ter outras configurações para aquele profile, por exemplo se formos configurar LS4J personalizado ou varios persistence.xml) 
+Assim como mostra (o código fonte no github)[https://github.com/marciosindeaux/maven-profiles], eu costumo coloca-los numa pasta chamada **profiles**, que fica ao lado de **src**. E dentro dela uma pasta para cada profile (afinal, podemos ter outras configurações para aquele profile, por exemplo se formos configurar LS4J personalizado ou varios persistence.xml) 
 
 Para o ambiente de desenvolvimento teremos:
 ```properties
@@ -96,7 +96,7 @@ _(arquivo app.properties localizado na pasta **profiles/prod/** )_
 
 ### Ajustando Application.properties
 
-application.properties é uma parte importante do nosso sistema, é ele que carrega as configurações, e, como no caso do projeto, se voce ultiliza SpringBoot, é uma das partes mais importantes da sua aplicação.
+application.properties é uma parte importante do nosso sistema, é ele que carrega as configurações, e, como no caso do projeto, se você ultiliza SpringBoot, é uma das partes mais importantes da sua aplicação.
 
 Ultilizando as variaveis, ele ficara assim :
 ```properties
@@ -106,8 +106,11 @@ spring.datasource.driver-class-name=@db_driver@
 spring.datasource.url=@db_url@
 ```
 
+> _Tá mais e aí ? Somente isso para eu conseguir configurar os dados dos ambientes da minha aplicaçoa?_
 
-> _Tá mais e aí ? Somente isso para eu voltar a ter segurança na minha aplicação ?_ 
+> _Sim, os dados ja estão prontos_
+
+> _Então já posso sair rodando o programa e tudo vai dar certo ?_
 
 Não, ainda não... sabe porque ? Porque o maven olha para o seu pom.xml, e o maven não fez curso _"Mãe diná"_ para saber que voce está usando perfis. 
 
@@ -118,7 +121,7 @@ Vamos resolver isso configurando o pom.xml
 ### Configurando pom.xml
 
 #### Explique-me como
-Antes de configurar o pom, voce pode achar chato, mas terei que explicar algumas tags, e a primeira delas é essa :
+Antes de configurar o pom, você pode achar chato, mas terei que explicar algumas tags, e a primeira delas é essa :
 
 * ```<id>dev</id>```
 Esta tag diz qual o nome identificador do perfil que vamos acessar, nesse caso, eu chamarei esse perfil de "dev", mas poderia chama-lo de "Batman" se eu assim o quisesse, bastaria mudar o conteudo entre as tags.
@@ -169,6 +172,6 @@ Levando como base o exemplo que tivemos nas ultimas partes da explicação, o po
 
 > _OK, E agora ? Meu projeto já está configurado com perfis do maven ?_
 
-Sim, está, basta apenas que voce faça ```mvn {command} -P {id_profile}``` para conseguir rodar a sua aplicação no profile que desejou. Leve este pequeno projeto como inspiração para suas aventuras com os perfis do maven. 
+Sim, está, basta apenas que você faça ```mvn {command} -P {id_profile}``` para conseguir rodar a sua aplicação no profile que desejou. Leve este pequeno projeto como inspiração para suas aventuras com os perfis do maven. 
 
 Espero ter ajudado.
