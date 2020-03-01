@@ -63,7 +63,7 @@ Primeiramente teremos um arquivo para cada perfil de configuração e ambiente, 
 
 Primeiramente, vamos criar pastas no sistema, para guardar esses profiles em algum local que possa ser acessado pelo nosso querido Maven.
 
-Assim como mostra (o código fonte no github)[https://github.com/marciosindeaux/maven-profiles], eu costumo coloca-los numa pasta chamada **profiles**, que fica ao lado de **src**. E dentro dela uma pasta para cada profile (afinal, podemos ter outras configurações para aquele profile, por exemplo se formos configurar LS4J personalizado ou varios persistence.xml) 
+Assim como mostra [o código fonte no github](https://github.com/marciosindeaux/maven-profiles), eu costumo coloca-los numa pasta chamada **profiles**, que fica ao lado de **src**. E dentro dela uma pasta para cada profile (afinal, podemos ter outras configurações para aquele profile, por exemplo se formos configurar LS4J personalizado ou varios persistence.xml) 
 
 Para o ambiente de desenvolvimento teremos:
 ```properties
