@@ -1,9 +1,9 @@
-# Maven Profiles - Uma Solução para Separação de Ambientes
+# Separando Ambientes com Perfís do Maven
+Uma pequena forma de separar as variáveis de ambiente de Desenvolvimento, Homologação e Produção, com Perfis do Maven (Maven Profiles). No caso exemplo, será utilizada uma aplicação que foi gerada no [Spring Initializr](https://start.spring.io/)
 
 ## Como era antes dos Profiles do maven 
 
-Durante o desenvolviomento de uma aplicação, é bem complicado isolar as configurações do ambiente em que a aplicação está. 
-É bem comun ver algo mais ou menos assim :
+Durante o desenvolvimento de uma aplicação, é bem complicado isolar as configurações do ambiente em que a aplicação está. É muito comum ver em empresas, aplicações que, quando estão em desenvolvimento utilizam um banco de dados local, em Homologação utilizam um banco de dados do servidor de homologação, e em Produção utilizam um outro banco de dados. 
 
 ```properties
 ##dev
